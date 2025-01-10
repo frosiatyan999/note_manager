@@ -5,4 +5,4 @@ print('Выберите новое значение для статуса:')
 print('\n'.join(status))
 choise = ('Напишите число для изменения статуса заметки: ')
 print(input(choise))
-if choise 
+if choise == 1
