@@ -1,20 +1,19 @@
-status = ['1.В процессе', '2.Отложено','3.Выполнено']
-print('Текущий статус заметки: ' + status[0])
+status_list = {'1':"Выполняется",'2':"Выполнено", '3':"Отложено"}
+status_list1 = ['1: Выполняется', '2: Выполнено','3: Отложено']
+print('Текущий статус заметки: ' + status_list['1'])
 print('Выберите новое значение для статуса:')
-print('\n'.join(status))
+print('\n'.join(status_list1))
 while True:
-    choise = print(input('Напишите число для изменения статуса заметки: '))
-    if choise == '1':
-        print('Текущий статус заметки: ' + status[0])
-        break
-    elif choise == '2':
-        print('Текущий статус заметки: ' + status[1])
-        break
-    elif choise == '3':
-        print('Текущий статус заметки: ' + status[2])
-        break
+    choise = input('Напишите число или напишите нужный статус для изменения статуса заметки: ')
+    if choise == '1' or choise == 'Выполняется':
+        print('Текущий статус заметки: ' + status_list['1'])
+        print('Для подтверждения текущего статуса нажмите Enter')
+    elif choise == '2' or choise == 'Выполнено':
+        print('Текущий статус заметки: ' + status_list['2'])
+        print('Для подтверждения текущего статуса нажмите Enter')
+    elif choise == '3' or choise == 'Отложено':
+        print('Текущий статус заметки: ' + status_list['3'])
+        print('Для подтверждения текущего статуса нажмите Enter')
     else:
         print('Неверный ввод')
-        break
-
-
+        continue
