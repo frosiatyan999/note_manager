@@ -7,18 +7,18 @@ print('1.',status_list['1'],'\n''2.',status_list['2'],'\n''3.',status_list['3'])
 # Создаем условие, при котором дается на выбор 3 статуса и добавляем choise1 который поможет в конце
 while True:
     choice = input('Напишите число или напишите нужный статус для изменения статуса заметки: ').strip().lower()
-    if choice.strip().lower() == '1' or choice.strip().lower() == 'Выполняется':
+    if choice.strip().lower() == '1' or choice.strip().lower() == 'выполняется':
         print('Текущий статус заметки: ' + status_list['1'])
         print('Для подтверждения текущего статуса нажмите Enter')
-    elif choice.strip().lower() == '2' or choice.strip().lower() == 'Выполнено':
+    elif choice.strip().lower() == '2' or choice.strip().lower() == 'выполнено':
         print('Текущий статус заметки: ' + status_list['2'])
         print('Для подтверждения текущего статуса нажмите Enter')
-    elif choice.strip().lower() == '3' or choice.strip().lower() == 'Отложено':
+    elif choice.strip().lower() == '3' or choice.strip().lower() == 'отложено':
         print('Текущий статус заметки: ' + status_list['3'])
         print('Для подтверждения текущего статуса нажмите Enter')
 # Создаем условия для остальный символов пр и котором пустой ввод будет окончательным выбором, а остальные символы ошибкой
     else:
-        if choice.strip().lower() == '':
+        if choice.strip() == '':
             break
         else:
             print('Неверный ввод')
