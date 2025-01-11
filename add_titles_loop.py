@@ -8,7 +8,7 @@ i = 1
 while True:
     title = input(f'Заголовок {i}\n').strip()
 # Пишем условие которое должно выполняться что бы остановить добавление заголовков а так же добавление заголовков в список
-    if title.lower == ('cтоп') or title == (''):
+    if title.lower() == 'cтоп' or title == '':
         break
     elif title in titles:
         print('Данная заметка будет удалена за повторение')
