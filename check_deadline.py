@@ -2,11 +2,8 @@ from datetime import datetime as dt
 current_date = dt.now().date()
 print('Текущая дата: ', current_date.strftime('%d-%m-%Y'))
 while True:
-    print('Ведите сначала день, затем месяц и год для определения даты в числовом формате')
-    day = input('Введите день: ')
-    month = input('Введите месяц: ')
-    year = input('Введите год: ')
-    issue_date = (day+'-'+month+'-'+year)
+    print('Ведите сначала день, затем месяц и год для определения даты в формате ДД-ММ-ГГГГ')
+    issue_date = input()
     try:
         issue_date = dt.strptime(issue_date, '%d-%m-%Y').date()
         print('Ваш дедлайн: ', issue_date.strftime('%d-%m-%Y'))
