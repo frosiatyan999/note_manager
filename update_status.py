@@ -1,31 +1,27 @@
 # Создаем словарь и кортеж (нужен только для красивого отображения статусов) 
 status_list = {'1':"Выполняется",'2':"Выполнено", '3':"Отложено"}
-status_list1 = ('1: Выполняется', '2: Выполнено','3: Отложено')
 print('Текущий статус заметки: ' + status_list['1'])
 print('Выберите новое значение для статуса:')
 # Далее кортеж не будет нужен
-print('\n'.join(status_list1))
+print('1.',status_list['1'],'\n''2.',status_list['2'],'\n''3.',status_list['3'])
 # Создаем условие, при котором дается на выбор 3 статуса и добавляем choise1 который поможет в конце
 while True:
-    choise = input('Напишите число или напишите нужный статус для изменения статуса заметки: ')
-    if choise == '1' or choise == 'Выполняется':
+    choice = input('Напишите число или напишите нужный статус для изменения статуса заметки: ').strip().lower()
+    if choice.strip().lower() == '1' or choice.strip().lower() == 'Выполняется':
         print('Текущий статус заметки: ' + status_list['1'])
         print('Для подтверждения текущего статуса нажмите Enter')
-        choise1 = choise
-    elif choise == '2' or choise == 'Выполнено':
+    elif choice.strip().lower() == '2' or choice.strip().lower() == 'Выполнено':
         print('Текущий статус заметки: ' + status_list['2'])
         print('Для подтверждения текущего статуса нажмите Enter')
-        choise1 = choise
-    elif choise == '3' or choise == 'Отложено':
+    elif choice.strip().lower() == '3' or choice.strip().lower() == 'Отложено':
         print('Текущий статус заметки: ' + status_list['3'])
         print('Для подтверждения текущего статуса нажмите Enter')
-        choise1 = choise
 # Создаем условия для остальный символов пр и котором пустой ввод будет окончательным выбором, а остальные символы ошибкой
     else:
-        if choise == '':
+        if choice.strip().lower() == '':
             break
         else:
             print('Неверный ввод')
             continue
 # Здесь спасает choise1 который перенимает строку choise и в случае пустого ввода не потеряет строку
-print('Обновление статуса: ', status_list.get(choise1))
+print('Обновление статуса: ', status_list.get(choice))
