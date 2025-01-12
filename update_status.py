@@ -8,15 +8,18 @@ print('1.',status_list['1'],'\n''2.',status_list['2'],'\n''3.',status_list['3'])
 while True:
     choice = input('Напишите число или напишите нужный статус для изменения статуса заметки: ').strip().lower()
     if choice.strip().lower() == '1' or choice.strip().lower() == 'выполняется':
+        choice1 = choice
         print('Текущий статус заметки: ' + status_list['1'])
         print('Для подтверждения текущего статуса нажмите Enter')
     elif choice.strip().lower() == '2' or choice.strip().lower() == 'выполнено':
+        choice1 = choice
         print('Текущий статус заметки: ' + status_list['2'])
         print('Для подтверждения текущего статуса нажмите Enter')
     elif choice.strip().lower() == '3' or choice.strip().lower() == 'отложено':
+        choice1 = choice 
         print('Текущий статус заметки: ' + status_list['3'])
         print('Для подтверждения текущего статуса нажмите Enter')
-# Создаем условия для остальный символов пр и котором пустой ввод будет окончательным выбором, а остальные символы ошибкой
+# Создаем условия для остальный символов при котором пустой ввод будет окончательным выбором, а остальные символы ошибкой
     else:
         if choice.strip() == '':
             break
@@ -24,4 +27,7 @@ while True:
             print('Неверный ввод')
             continue
 # Здесь спасает choise1 который перенимает строку choise и в случае пустого ввода не потеряет строку
-print('Обновление статуса: ', status_list.get(choice))
+if choice1:
+    print('Обновление статуса:', status_list.get(choice1))
+else:
+    print('Статус не изменен')
