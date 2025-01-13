@@ -24,6 +24,21 @@ while True:
         else:
             note['Имя'] = username
             break
-
+    while True:
+        title = input('Введите заголовок вашей заметки: ')
+        note['Заголовок:'] = title
+        if title == '':
+            print('Неверный ввод! Попробуйте ещё раз.')
+            continue
+        else:
+            break
+    while True:
+        content = input('Придумайте описание вашей заметки: ')
+        note['Описание:'] = content
+        if content == '':
+            print('Неверный ввод! Попробуйте ещё раз.')
+            continue
+        else:
+            break
 
 
