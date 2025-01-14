@@ -46,15 +46,12 @@ while True:
         print('1.', status_list['1'], '\n''2.', status_list['2'], '\n''3.', status_list['3'])
         choice = input('Напишите число или напишите нужный статус для изменения статуса заметки: \n').strip().lower()
         if choice.strip().lower() == '1' or choice.strip().lower() == 'выполняется':
-            choice1 = choice
             print('Текущий статус заметки: ' + status_list['1'])
             break
         elif choice.strip().lower() == '2' or choice.strip().lower() == 'выполнено':
-            choice1 = choice
             print('Текущий статус заметки: ' + status_list['2'])
             break
         elif choice.strip().lower() == '3' or choice.strip().lower() == 'отложено':
-            choice1 = choice
             print('Текущий статус заметки: ' + status_list['3'])
             break
         # Создаем условия для остальный символов при котором пустой ввод будет окончательным выбором, а остальные символы ошибкой
@@ -62,7 +59,7 @@ while True:
             print('Неверный ввод')
             continue
     # Здесь спасает choise1 который перенимает строку choise и в случае пустого ввода не потеряет строку
-        note['Cтатус заметки:'] = status_list.get(choice1)
+        note['Cтатус заметки:'] = status_list.get(choice)
     while True:
         print('Ведите сначала день, затем месяц и год для определения даты в формате ДД-ММ-ГГГГ')
         created_date = input()
