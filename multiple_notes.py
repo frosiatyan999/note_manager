@@ -92,7 +92,7 @@ while True:
         continue
     elif welcome == 'нет':
         print('Группируем ваши данные...')
-        sleep(3)
+        sleep(1)
         break
     else:
         print('Неверный ввод! Попробуйте ещё раз.')
