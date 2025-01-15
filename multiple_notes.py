@@ -1,9 +1,11 @@
 from time import sleep
 from datetime import datetime as dt
+# Программа запускается с приветствия
 multiple_notes = []
 print('Добро пожаловать')
 current_date = dt.today().date()
 print('Сегодня: ', current_date)
+# Создаем условие для добавление заметки
 while True:
     welcome = input('Хотите создать заметку? да/нет\n').strip().lower()
     if welcome.strip().lower() == 'да':
@@ -13,6 +15,7 @@ while True:
     else: 
         print('Неверное значение')
 i = 0
+# Создаем условия для каждой темы заметки
 while True:
     note = {}
     while True:
@@ -54,12 +57,11 @@ while True:
         elif choice.strip().lower() == '3' or choice.strip().lower() == 'отложено':
             print('Текущий статус заметки: ' + status_list['3'])
             break
-        # Создаем условия для остальный символов при котором пустой ввод будет окончательным выбором, а остальные символы ошибкой
+#
         else:
             print('Неверный ввод')
             continue
-    # Здесь спасает choise1 который перенимает строку choise и в случае пустого ввода не потеряет строку
-        note['Cтатус заметки:'] = status_list.get(choice)
+    note['Cтатус заметки:'] = status_list.get(choice)
     while True:
         print('Ведите сначала день, затем месяц и год для определения даты в формате ДД-ММ-ГГГГ')
         created_date = input()
