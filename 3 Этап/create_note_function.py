@@ -2,8 +2,6 @@
 from datetime import datetime as dt
 from datetime import timedelta
 
-from date_changer import issue_date, created_date
-
 
 # Создаём функцию создания заметки
 def create_note():
