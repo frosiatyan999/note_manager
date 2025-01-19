@@ -35,7 +35,7 @@ def create_note():
         "title": title,
         "content": content,
         "status": status,
-        "created_date": created_date,
+        "created_date": dt.strftime(created_date, '%d-%m-%Y'),
         "issue_date": dt.strftime(issue_date, '%d-%m-%Y')
     }
 
