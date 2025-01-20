@@ -8,8 +8,49 @@ from search_notes_function import search_notes
 # Инициализация библиотеки
 init(autoreset=True)
 
+
 def delete_note(notes):
-    # Реалиовать тело функции
+    i = 0
+    for item in notes:
+        print(f'\nЗаметка {i + 1}: ')
+        i += 1
+        print(*item.items(), sep='\n')
+    while True:
+        choice_title = input(
+            'Введите имя пользователя или заголовок заметки которую хотите удалить: \n').lower().strip()
+        for j in reversed(range(len(notes))):
+            if (notes[j]['title'].lower().strip() != choice_title
+                    and notes[j]['username'] != choice_title):
+                continue
+            # Когда заголовки совпали, предлагается подтвердить удаление
+            elif notes[j]['title'].lower().strip() == choice_title or notes[j]['username'] == choice_title:
+                while True:
+                    answer = input('Заметка найдена! Подтвердите удаление(да/нет):\n').lower()
+                    if answer == 'да':
+                        del notes[j]
+                        print('Удаление успешно!')
+                        break
+                    elif answer == 'нет':
+                        break
+                    elif answer == '' or str:
+                        print('Неверный ввод! Попробуйте ещё.')
+                        continue
+            # Если заголовок не найден, программа об этом сообщает либо после удаления таких заметок нет
+            print('Заметок для удаления не найдено!')
+            continue
+        stop_ = input('\nВведите стоп если хотите закончить удаление: \n').lower().strip()
+        # Выводим список заметок после изменения
+        print('Ваш список заметок после изменения:\n')
+        b = 0
+
+        for item in notes:
+            print(f'Заметка №{b + 1}:')
+            b += 1
+            print(*item.items(), sep='\n')
+        if stop_.lower() == "стоп":
+            break
+        continue
+
     return notes
 
 def display_menu(notes):
@@ -41,8 +82,7 @@ def display_menu(notes):
                 else:
                     print("Список заметок пуст.")
             elif choice == "4":
-                # Реализуйте функцию удаления заметки
-                notes = delete_note(notes)
+                delete_note(notes)
             elif choice == "5":
                 keyword = input("Введите ключевое слово для поиска: ")
                 status = input("Введите статус для поиска (или оставьте пустым): ")
@@ -55,11 +95,10 @@ def display_menu(notes):
                 print("Неверный выбор. Попробуйте снова.")
         except ValueError:
             print("Ошибка: введите число от 1 до 6.")
-
 # Запуск меню
 if __name__ == "__main__":
     notes = [
         {"title": "Заголовок 1", "username": "Имя 1"},
         {"title": "Заголовок 2", "username": "Имя 2"},
     ]
-    display_menu(notes)
+display_menu(notes)
