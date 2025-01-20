@@ -1,48 +1,56 @@
-# Загружаем библиотеку datetime для работы с датами
-from datetime import datetime as dt
-from datetime import timedelta
+from datetime import datetime
 
-
-# Создаём функцию создания заметки
 def create_note():
-# Просим пользователя ввести данные для заметки
-    username = input('Введите ваше имя: ').strip()
-    title = input('Введите заголовок заметки: ').strip()
-    content = input('Введите описание заметки: ').strip()
-    status = input('Введите статус заметки ("новая", "в процессе", "выполнена"): ').lower().strip()
-# Текущая дата вводится автоматически
-    created_date = dt.now().date().strftime('%d-%m-%Y')
-# С помощью цикла вводим и проверяем правильность даты дедлайна
-    while True:
-        issue_date = input('Введите дату дедлайна заметкив формате "дд-мм-гггг"\n'
-                    ' (через дефис и без пробелов): или выберите по умолчанию нажав Enter ')
-        if issue_date == '':
-            created_date = dt.strptime(created_date, '%d-%m-%Y').date()
-            issue_date = created_date + timedelta(days=7)
-            break
-        else:
-            try:
-                issue_date = dt.strptime(issue_date, '%d-%m-%Y').date()
-                break
-            except ValueError:
-                print('Неверный ввод! Попробуйте ещё.')
-                continue
+    print("=== Создание новой заметки ===")
+    username = input("Введите имя пользователя: ").strip()
+    while not username:
+        print("Имя пользователя не может быть пустым.")
+        username = input("Введите имя пользователя: ").strip()
 
+    title = input("Введите заголовок заметки: ").strip()
+    while not title:
+        print("Заголовок заметки не может быть пустым.")
+        title = input("Введите заголовок заметки: ").strip()
 
-# Записываем все полученные данные в словарь
-    note = {
+    content = input("Введите описание заметки: ").strip()
+    while not content:
+        print("Описание заметки не может быть пустым.")
+        content = input("Введите описание заметки: ").strip()
+
+    status_options = ["новая", "в процессе", "выполнено"]
+    status = input(f"Введите статус заметки ({', '.join(status_options)}): ").strip().lower()
+    while status not in status_options:
+        print(f"Неверный статус. Доступные варианты: {', '.join(status_options)}.")
+        status = input(f"Введите статус заметки ({', '.join(status_options)}): ").strip().lower()
+
+    created_date = datetime.now().strftime("%d-%m-%Y")
+
+    # дд-мм-гггг
+    issue_date = input("Введите дату дедлайна (день-месяц-год): ").strip()
+    while not validate_date(issue_date): # not True => False
+        print("Неверный формат даты. Пожалуйста, используйте формат 'день-месяц-год'.")
+        issue_date_as_str = input("Введите дату дедлайна (день-месяц-год): ").strip()
+        issue_date = datetime.strptime(issue_date_as_str, "%d-%m-%Y")
+
+    note = { # создаем новый словарь
         "username": username,
         "title": title,
         "content": content,
         "status": status,
-        "created_date": dt.strftime(created_date, '%d-%m-%Y'),
-        "issue_date": dt.strftime(issue_date, '%d-%m-%Y')
+        "created_date": created_date,
+        "issue_date": issue_date
     }
 
     return note
 
-# Вызываем созданную функцию
-note = create_note()
-# Выводим результат работы функции на экран
-print("Заметка создана: ")
-print(*note.items(), sep='\n')
+def validate_date(date_str):
+    try: # попытайся
+        datetime.strptime(date_str, "%d-%m-%Y")
+        return True
+    except ValueError:
+        return False
+
+if __name__ == "__main__":
+    note = create_note()
+    print("\nЗаметка создана:")
+    print(note)
